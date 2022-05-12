@@ -6,6 +6,8 @@ class Solution:
     @time complexity: O(n)
     @space complexity: O(1)
     """
+    # Use sliding window technique to hold counts of each added character
+    # and shrink window while there are more than k distinct characters
 
     def length_of_longest_substring_k_distinct(self, s: str, k: int) -> int:
         start = 0
@@ -21,9 +23,6 @@ class Solution:
                 charCounts[ord(s[start])] -= 1
                 start += 1
 
-            # print(f"start: {start}, end: {end}")
-            if (end - start + 1) > maxLen:
-                print(f"start: {start}, end: {end}")
             maxLen = max(end - start + 1, maxLen)
 
         return maxLen
